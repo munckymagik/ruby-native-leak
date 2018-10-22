@@ -3,7 +3,15 @@ RSpec.describe Leak do
     expect(Leak::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe '#leak' do
+    it 'leaks some memory' do
+      expect(Leak.leak).to eq(nil)
+    end
+  end
+
+  describe '#rss' do
+    it 'returns the VM RSS for the process' do
+      expect(Leak.rss).to be_an(Integer)
+    end
   end
 end

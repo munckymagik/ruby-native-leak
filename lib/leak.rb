@@ -2,5 +2,7 @@ require "leak/version"
 require "leak/leak"
 
 module Leak
-  # Your code goes here...
+  def self.rss
+    `ps -o rss -p #{$$}`.lines.last.strip.to_i
+  end
 end
